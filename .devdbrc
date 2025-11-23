@@ -1,0 +1,6 @@
+[
+  {
+    "type": "sqlite",
+    "path": "/Users/amir/Developments/Laravel/pg-app/database/database.sqlite"
+  }
+]

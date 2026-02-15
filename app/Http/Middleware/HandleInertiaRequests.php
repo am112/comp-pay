@@ -2,6 +2,8 @@
 
 namespace App\Http\Middleware;
 
+use App\Actions\Menu\ListMenuAction;
+use App\Models\Tenant;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
@@ -38,6 +40,8 @@ class HandleInertiaRequests extends Middleware
     {
         [$message, $author] = str(Inspiring::quotes()->random())->explode('-');
 
+        $singleTenant = $request->route('tenant') ?? null;
+
         return [
             ...parent::share($request),
             'name' => config('app.name'),
@@ -45,7 +49,22 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
+            'tenant' => $singleTenant,
+            'tenants' => $singleTenant === null ? Tenant::all() : [],
+            'menu' => $this->getMenuByTenant($request->route('tenant')?->id ?? null),
             'sidebarOpen' => ! $request->hasCookie('sidebar_state') || $request->cookie('sidebar_state') === 'true',
+            'flash' => [
+                'message' => fn () => $request->session()->get('message'),
+            ],
         ];
+    }
+
+    private function getMenuByTenant(?string $tenantId): array
+    {
+        if ($tenantId === null) {
+            return [];
+        }
+
+        return (new ListMenuAction)->handle($tenantId);
     }
 }

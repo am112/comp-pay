@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Tenants;
 
-use App\Actions\Orders\InvoicesByTenureQueryBuilderAction;
+use App\Actions\Invoices\InvoicesByTenureQueryBuilderAction;
 use App\Http\Controllers\Controller;
 use App\Models\Tenant;
 use Illuminate\Http\Request;

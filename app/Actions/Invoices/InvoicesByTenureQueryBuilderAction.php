@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Actions\Orders;
+namespace App\Actions\Invoices;
 
 use App\Data\InvoiceData;
 use App\Models\Invoice;

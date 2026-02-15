@@ -2,5 +2,9 @@
   {
     "type": "sqlite",
     "path": "/Users/amir/Developments/Laravel/pg-app/database/database.sqlite"
+  },
+  {
+    "type": "sqlite",
+    "path": "/Users/newuser/Herd/pg-app/database/database.sqlite"
   }
 ]

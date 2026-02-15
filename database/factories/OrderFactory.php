@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Tenant;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,13 +17,17 @@ class OrderFactory extends Factory
      */
     public function definition(): array
     {
+        $tenant = Tenant::inRandomOrder()->first();
+
         return [
-            'reference_no' => $this->faker->unique()->uuid(),
-            'identifier' => $this->faker->unique()->uuid(),
+            'tenant_id' => $tenant->id,
+            'reference_no' => 'OR-'.$this->faker->unique()->numberBetween(100000, 999999),
+            'provider_no' => $this->faker->unique()->numberBetween(100000, 999999),
             'status' => 'pending',
             'amount' => $this->faker->numberBetween(5000, 9999),
+            'currency' => $tenant->currency,
             'driver' => $this->faker->randomElement(['c2p', 'curlec']),
-            'region' => $this->faker->randomElement(['MY', 'SG']),
+            'region' => $tenant->code,
         ];
     }
 }

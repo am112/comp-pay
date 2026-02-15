@@ -11,18 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('invoices', function (Blueprint $table) {
+        Schema::create('invoices', function (Blueprint $table): void {
             $table->id();
+            $table->foreignUuid('tenant_id')->constrained('tenants');
             $table->foreignId('order_id')->constrained('orders');
-            $table->string('type')->index(); // mandate | instant | collection
-            $table->string('collection_no')->nullable(); // invoice no from application
+            $table->string('type')->index(); // consent | instant | collection
             $table->string('reference_no')->unique()->index(); // generated
-            $table->string('identifier')->nullable(); // curlec refno | c2p tokenization
+            $table->string('provider_no')->nullable(); // curlec refno | c2p tokenization
+            $table->string('collection_no')->nullable(); // invoice no from application
             $table->string('status')->default('pending');
             $table->integer('amount')->nullable()->default(0);
-            $table->dateTime('response_at')->nullable();
+            $table->string('currency')->nullable();
             $table->string('driver')->nullable();
             $table->string('batch')->nullable();
+            $table->integer('retry')->nullable()->default(1);
+            $table->dateTime('response_at')->nullable();
+            $table->string('response_code')->nullable();
             $table->timestamps();
         });
     }

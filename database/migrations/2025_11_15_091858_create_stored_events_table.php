@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('stored_events', function (Blueprint $table) {
+        Schema::create('stored_events', function (Blueprint $table): void {
             $table->id();
             $table->uuid('aggregate_uuid')->nullable();
             $table->unsignedBigInteger('aggregate_version')->nullable();

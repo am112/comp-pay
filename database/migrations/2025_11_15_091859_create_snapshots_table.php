@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('snapshots', function (Blueprint $table) {
+        Schema::create('snapshots', function (Blueprint $table): void {
             $table->id();
             $table->uuid('aggregate_uuid');
             $table->unsignedBigInteger('aggregate_version');

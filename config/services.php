@@ -34,15 +34,4 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
-
-    'c2p' => [
-        'name' => 'c2p',
-        'key' => 'c2p',
-    ],
-
-    'curlec' => [
-        'name' => 'curlec',
-        'key' => 'curlec',
-    ],
-
 ];

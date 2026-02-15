@@ -1,4 +1,4 @@
-import AppLogoIcon from '@/components/app-logo-icon';
+import AppLogoIcon from '@/components/sidebar/app-logo-icon';
 import { HoverBackground } from '@/components/ui/hover-background';
 import { home } from '@/routes';
 import { Link } from '@inertiajs/react';

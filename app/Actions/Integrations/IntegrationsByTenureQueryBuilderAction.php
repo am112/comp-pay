@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Actions\Orders;
+namespace App\Actions\Integrations;
 
 use App\Data\IntegrationData;
 use App\Models\Integration;

@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Tenants;
 
 use App\Actions\Integrations\CreateIntegrationAction;
 use App\Actions\Integrations\DeleteIntegrationAction;
+use App\Actions\Integrations\IntegrationsByTenureQueryBuilderAction;
 use App\Actions\Integrations\UpdateIntegrationAction;
-use App\Actions\Orders\IntegrationsByTenureQueryBuilderAction;
 use App\Data\IntegrationData;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Integrations\DeleteIntegrationRequest;
